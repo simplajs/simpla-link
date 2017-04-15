@@ -84,29 +84,49 @@
 
       properties: {
 
+        /**
+         * Href value of the link
+         * @type {String}
+         */
         href: {
           type: String,
           value: '',
           notify: true
         },
 
+        /**
+         * Placeholder to display in link prompt
+         * @type {String}
+         */
         placeholder: {
           type: String,
           value: 'Enter a URL...'
         },
 
+        /**
+         * Whether element is editable
+         * @type {Boolean}
+         */
         editable: {
           type: Boolean,
           value: false,
           notify: true
         },
 
+        /**
+         * Whether link prompt is open
+         * @type {Boolean}
+         */
         active: {
           type: Boolean,
           value: false,
           notify: true
         },
 
+        /**
+         * Make element focuseable
+         * @type {Number}
+         */
         tabindex: {
           type: Number,
           reflectToAttribute: true,
@@ -122,16 +142,29 @@
 
       behaviors: [ simpla ],
 
+      /**
+       * Open link prompt if editable
+       * @return {undefined}
+       */
       _open: function() {
         if (this.editable) {
           this.active = true;
         }
       },
 
+      /**
+       * Close link prompt
+       * @return {undefined}
+       */
       _close: function() {
         this.active = false;
       },
 
+      /**
+       * Close link prompt if certain hotkeys are pressed
+       * @param  {Event} e Keydown event
+       * @return {undefined}
+       */
       _closeOnHotkeys: function(e) {
         let enter = e.keyCode === 13,
             escape = e.keyCode === 27;
@@ -141,6 +174,11 @@
         }
       },
 
+      /**
+       * Disable inner anchor while simpla-link is editable
+       * @param  {Event} e Click event
+       * @return {undefined}
+       */
       _disableLinkWhileEditable: function(e) {
         if (this.editable) {
           e.preventDefault();
