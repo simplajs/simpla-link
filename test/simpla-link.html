@@ -4,32 +4,36 @@
     <meta charset="utf-8">
     <title>simpla-link</title>
 
-    <!-- Setup WCT & Polymer-->
+    <!-- Import WCT-->
     <script src="https://unpkg.com/webcomponents.js/@^0.7.24/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../../test-fixture/test-fixture.html">
     <script src="../../web-component-tester/browser.js"></script>
 
-    <!-- Setup Simpla -->
+    <!-- Import Simpla -->
     <script src="https://unpkg.com/simpla@^2.0.0"></script>
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../simpla-link.html">
+  </head>
+
+  <body>
     <script>
       Simpla.init('dummy');
     </script>
 
-    <!-- Import the element to test -->
-    <link rel="import" href="../simpla-link.html">
-
-  </head>
-  <body>
     <test-fixture id="default">
       <template>
         <simpla-link></simpla-link>
       </template>
     </test-fixture>
+
     <script>
       describe('<simpla-link>', function() {
         var component;
 
         beforeEach(function() {
           component = fixture('default');
+          Simpla = window.Simpla;
         });
 
         it('is okay', function() {
@@ -55,7 +59,7 @@
           });
 
           it('goes editable when Simpla is editable', function() {
-            window.Simpla.editable(true);
+            Simpla.editable(true);
             expect(component.editable).to.be.equal(true);
           });
         });
@@ -63,7 +67,7 @@
         describe('data', function() {
           it('sets data to Simpla on change', function(done) {
             component.path = '/test';
-            window.Simpla.observe('/test', function() {
+            Simpla.observe('/test', function() {
               done();
             });
 
@@ -72,7 +76,7 @@
 
           it('updates href when Simpla data changes', function(done) {
             component.path = '/test';
-            window.Simpla.set('/test', {
+            Simpla.set('/test', {
               type: 'Link',
               data: { href: 'test' }
             }).then(function() {

@@ -14,6 +14,15 @@
     <script>
       Simpla.init('dummy');
     </script>
+
+    <style>
+      body {
+        height: 5rem;
+      }
+      simpla-link {
+        margin: 2rem 0 0 2rem;
+      }
+    </style>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
