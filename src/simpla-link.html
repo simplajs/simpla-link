@@ -1,0 +1,152 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../simpla-styles/colors.html" async>
+<link rel="import" href="../simpla-styles/ui.html" async>
+
+<dom-module id="simpla-link">
+  <template>
+    <style>
+      :host, *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      :host {
+        display: inline-block;
+        overflow: visible;
+        outline: none;
+        font-size: var(--simpla-scale-0);
+        font-family: var(--simpla-font-family);
+        -moz-osx-font-smoothing: grayscale;
+         -webkit-font-smoothing: antialiased;
+                 font-smoothing: antialiased;
+      }
+
+      .wrapper {
+        position: relative;
+      }
+
+      .input {
+        position: absolute;
+        top: -0.5em;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        width: 100%;
+        min-width: 11em;
+        max-width: 16em;
+        padding: 0.75em 1em;
+        color: white;
+        background: var(--simpla-grey-700);
+        border: 0;
+        outline: 0;
+        border-radius: var(--simpla-border-radius);
+      }
+
+      .input::placeholder {
+        color: var(--simpla-med-white);
+      }
+
+      .link {
+        color: inherit;
+        outline: inherit;
+        text-decoration: inherit;
+      }
+
+      .link[data-editable] {
+        cursor: inherit;
+      }
+    </style>
+
+    <div class="wrapper">
+       <input
+        type="text"
+        class="input"
+        value="{{href::input}}"
+        placeholder="[[placeholder]]"
+        on-keydown="_closeOnHotkeys"
+        hidden$="[[!active]]"
+      >
+
+      <a href="[[href]]"
+        class="link"
+        data-editable$="[[editable]]"
+        on-tap="_disableLinkWhileEditable"
+      >
+        <slot></slot>
+      </a>
+    </div>
+
+  </template>
+
+  <script>
+    import simpla from './behaviors/simpla';
+
+    Polymer({
+      is: 'simpla-link',
+
+      properties: {
+
+        href: {
+          type: String,
+          value: '',
+          notify: true
+        },
+
+        placeholder: {
+          type: String,
+          value: 'Enter a URL...'
+        },
+
+        editable: {
+          type: Boolean,
+          value: false,
+          notify: true
+        },
+
+        active: {
+          type: Boolean,
+          value: false,
+          notify: true
+        },
+
+        tabindex: {
+          type: Number,
+          reflectToAttribute: true,
+          value: 0
+        }
+
+      },
+
+      listeners: {
+        'focus': '_open',
+        'blur': '_close'
+      },
+
+      behaviors: [ simpla ],
+
+      _open: function() {
+        if (this.editable) {
+          this.active = true;
+        }
+      },
+
+      _close: function() {
+        this.active = false;
+      },
+
+      _closeOnHotkeys: function(e) {
+        let enter = e.keyCode === 13,
+            escape = e.keyCode === 27;
+
+        if (this.active && (enter || escape)) {
+          this.active = false;
+        }
+      },
+
+      _disableLinkWhileEditable: function(e) {
+        if (this.editable) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+    });
+  </script>
+</dom-module>

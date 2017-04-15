@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>simpla-link</title>
+
+    <!-- Setup WCT & Polymer-->
+    <script src="https://unpkg.com/webcomponents.js/@^0.7.24/webcomponents-lite.min.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <!-- Setup Simpla -->
+    <script src="https://unpkg.com/simpla@^2.0.0"></script>
+    <script>
+      Simpla.init('dummy');
+    </script>
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../simpla-link.html">
+
+  </head>
+  <body>
+    <test-fixture id="default">
+      <template>
+        <simpla-link></simpla-link>
+      </template>
+    </test-fixture>
+    <script>
+      describe('<simpla-link>', function() {
+        var component;
+
+        beforeEach(function() {
+          component = fixture('default');
+        });
+
+        it('is okay', function() {
+          expect(component).to.be.ok;
+        });
+
+        describe('states', function() {
+          it('goes active when focused and editable', function() {
+            component.editable = true;
+            component.focus();
+            expect(component.active).to.be.equal(true);
+          });
+
+          it('does not go active when focused and not editable', function() {
+            component.editable = false;
+            component.focus();
+            expect(component.active).to.be.equal(false);
+          });
+
+          it('goes inactive when blurred and editable', function() {
+            component.editable = true;
+            expect(component.active).to.be.equal(false);
+          });
+
+          it('goes editable when Simpla is editable', function() {
+            window.Simpla.editable(true);
+            expect(component.editable).to.be.equal(true);
+          });
+        });
+
+        describe('data', function() {
+          it('sets data to Simpla on change', function(done) {
+            component.path = '/test';
+            window.Simpla.observe('/test', function() {
+              done();
+            });
+
+            component.href = 'test';
+          });
+
+          it('updates href when Simpla data changes', function(done) {
+            component.path = '/test';
+            window.Simpla.set('/test', {
+              type: 'Link',
+              data: { href: 'test' }
+            }).then(function() {
+              expect(component.href).to.be.equal('test');
+              done();
+            });
+          })
+        });
+      });
+    </script>
+  </body>
+</html>

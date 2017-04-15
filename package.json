@@ -1,0 +1,54 @@
+{
+  "name": "simpla-link",
+  "version": "0.0.0",
+  "description": "Wrap any element in an editable link",
+  "main": "simpla-link.html",
+  "scripts": {
+    "test": "gulp test:local"
+  },
+  "author": "Simpla <friends@simpla.io>",
+  "license": "MIT",
+  "keywords": [
+    "simpla",
+    "content",
+    "editable",
+    "cms",
+    "link"
+    "web component",
+    "custom element"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SimplaElements/simpla-link.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SimplaElements/simpla-link/issues"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.0.0",
+    "babel-core": "^6.2.1",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "browser-sync": "^2.9.0",
+    "eslint": "^3.14.1",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^3.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.0",
+    "gulp-inline-source": "^3.0.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-postcss": "^6.1.0",
+    "gulp-process-inline": "^0.1.1",
+    "gulp-rollup-file": "^0.1.0",
+    "gulp-size": "^2.0.0",
+    "rollup-plugin-babel": "^2.6.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-json": "^2.1.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "run-sequence": "^1.1.5",
+    "web-component-tester": "^5.0.0",
+    "yargs": "^7.1.0"
+  }
+}

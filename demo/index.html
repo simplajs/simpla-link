@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>simpla-link Demo</title>
+
+    <!-- Setup demo page  & Simpla -->
+    <script src="https://unpkg.com/webcomponents.js@^0.7.24/webcomponents-lite.min.js"></script>
+    <script src="https://unpkg.com/simpla@^2.0.0"></script>
+    <script>
+      window.Polymer = { dom: 'shadow' };
+      Simpla.init('dummy');
+    </script>
+    <link rel="import" href="../iron-demo-helpers/demo-snippet.html">
+
+    <!-- Import component -->
+    <link rel="import" href="../simpla-link.html">
+
+    <!-- Import demo Simpla helpers -->
+    <link rel="import" href="../simpla-img/simpla-img.html">
+    <link rel="import" href="../simpla-text/simpla-text.html">
+    <link rel="import" href="../simpla-styles/ui.html">
+
+    <!-- Demo styles -->
+    <style is="custom-style">
+      /**
+       * Page styles
+       */
+      body {
+        font-family: sans-serif;
+        color: #303c46
+      }
+
+      .demo {
+        width: 90%;
+        max-width: 38rem;
+        margin: 4rem auto;
+      }
+
+      .demo__title {
+        font-size: 1.4rem;
+        font-weight: 400;
+      }
+
+      .edit-mode {
+        @apply(--simpla-button);
+        font-size: var(--simpla-scale-00);
+      }
+
+      .edit-mode[data-editable="false"] {
+        background: var(--simpla-grey-300);
+        color: var(--simpla-grey-700);
+      }
+
+      simpla-link {
+        padding: 0.25rem 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="demo">
+      <button class="edit-mode" id="edit">
+        Editable
+      </button>
+
+      <script>
+        (function() {
+          var button = document.querySelector('#edit');
+
+          Simpla.editable(true);
+          button.setAttribute('data-editable', true)
+
+
+          button.addEventListener('click', function() {
+            Simpla.editable(!Simpla.getState('editable'));
+            button.setAttribute('data-editable', Simpla.getState('editable'));
+          });
+        })();
+      </script>
+    </div>
+
+    <div class="demo">
+      <h1 class="demo__title">Basic demo</h1>
+      <demo-snippet>
+        <template>
+          <simpla-link path="/basic">
+            Click me
+          </simpla-link>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="demo">
+      <h1 class="demo__title">Wrapping Simpla elments</h1>
+      <demo-snippet>
+        <template>
+          <simpla-link path="/simpla-text">
+            <simpla-text plaintext path="/simpla-text/content"></simpla-text>
+          </simpla-link>
+
+          <br>
+
+          <simpla-link path="/simpla-img">
+            <img is="simpla-img" path="/simpla-img/content">
+          </simpla-link>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="demo">
+      <h1 class="demo__title">Custom placeholder</h1>
+      <demo-snippet>
+        <template>
+          <simpla-link path="/placeholder" placeholder="URL for next page">
+            Next page >
+          </simpla-link>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="demo">
+      <h1 class="demo__title">Static content</h1>
+      <demo-snippet>
+        <template>
+          <simpla-link href="https://google.com" path="/static">
+            Predefined link
+          </simpla-link>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="demo">
+      <h1 class="demo__title">Synced content</h1>
+      <demo-snippet>
+        <template>
+          <simpla-link path="/synced">
+            Synced link
+          </simpla-link>
+
+          <br>
+
+          <simpla-link path="/synced">
+            Synced link
+          </simpla-link>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
