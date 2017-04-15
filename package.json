@@ -1,6 +1,6 @@
 {
   "name": "simpla-link",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Wrap any element in an editable link",
   "main": "simpla-link.html",
   "scripts": {
