@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../simpla-element-behavior/simpla-element-behavior.html">
 <link rel="import" href="../simpla-styles/colors.html" async>
 <link rel="import" href="../simpla-styles/ui.html" async>
 
@@ -77,8 +78,6 @@
   </template>
 
   <script>
-    import simpla from './behaviors/simpla';
-
     Polymer({
       is: 'simpla-link',
 
@@ -141,7 +140,14 @@
         'blur': '_close'
       },
 
-      behaviors: [ simpla ],
+      behaviors: [ SimplaBehaviors.Element ],
+
+      created: function() {
+        this.setupSimpla({
+          type: 'Link',
+          dataProperties: [ 'href' ]
+        });
+      },
 
       /**
        * Open link prompt if editable

@@ -28,7 +28,8 @@
   ],
   "dependencies": {
     "polymer": "^1.8.0",
-    "simpla-styles": "^1.0.0"
+    "simpla-styles": "^1.0.0",
+    "simpla-element-behavior": "^0.1.2"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.5",
