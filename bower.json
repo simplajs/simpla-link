@@ -36,6 +36,7 @@
     "web-component-tester": "^5.0.1",
     "simpla-text": "^1.0.3",
     "simpla-img": "^1.0.1",
-    "simpla-styles": "^1.0.0"
+    "simpla-styles": "^1.0.0",
+    "simpla-demo-helper": "^0.1.2"
   }
 }

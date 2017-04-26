@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <title>simpla-link Demo</title>
 
-    <!-- Setup demo page  & Simpla -->
+    <!-- Setup demo page -->
     <script src="https://unpkg.com/webcomponents.js@^0.7.24/webcomponents-lite.min.js"></script>
-    <script src="https://unpkg.com/simpla@^2.0.0"></script>
     <script>
       window.Polymer = { dom: 'shadow' };
-      Simpla.init('dummy');
     </script>
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../simpla-demo-helper/simpla-demo-helper.html">
 
     <!-- Import component -->
     <link rel="import" href="../simpla-link.html">
@@ -32,10 +31,16 @@
         color: #303c46
       }
 
-      .demo {
+      .wrapper {
         width: 90%;
         max-width: 38rem;
-        margin: 4rem auto;
+        margin: 2rem auto;
+      }
+
+      .demo {
+        display: inline-block;
+        width: 100%;
+        margin: 2rem auto;
       }
 
       .demo__title {
@@ -60,92 +65,76 @@
   </head>
 
   <body>
-    <div class="demo">
-      <button class="edit-mode" id="edit">
-        Editable
-      </button>
+    <div class="wrapper">
 
-      <script>
-        (function() {
-          var button = document.querySelector('#edit');
+      <simpla-demo-helper></simpla-demo-helper>
 
-          Simpla.editable(true);
-          button.setAttribute('data-editable', true)
+      <div class="demo">
+        <h1 class="demo__title">Basic demo</h1>
+        <demo-snippet>
+          <template>
+            <simpla-link path="/basic">
+              Click me
+            </simpla-link>
+          </template>
+        </demo-snippet>
+      </div>
 
+      <div class="demo">
+        <h1 class="demo__title">Wrapping Simpla elments</h1>
+        <demo-snippet>
+          <template>
+            <simpla-link path="/simpla-text">
+              <simpla-text plaintext path="/simpla-text/content"></simpla-text>
+            </simpla-link>
 
-          button.addEventListener('click', function() {
-            Simpla.editable(!Simpla.getState('editable'));
-            button.setAttribute('data-editable', Simpla.getState('editable'));
-          });
-        })();
-      </script>
-    </div>
+            <br>
 
-    <div class="demo">
-      <h1 class="demo__title">Basic demo</h1>
-      <demo-snippet>
-        <template>
-          <simpla-link path="/basic">
-            Click me
-          </simpla-link>
-        </template>
-      </demo-snippet>
-    </div>
+            <simpla-link path="/simpla-img">
+              <img is="simpla-img" path="/simpla-img/content">
+            </simpla-link>
+          </template>
+        </demo-snippet>
+      </div>
 
-    <div class="demo">
-      <h1 class="demo__title">Wrapping Simpla elments</h1>
-      <demo-snippet>
-        <template>
-          <simpla-link path="/simpla-text">
-            <simpla-text plaintext path="/simpla-text/content"></simpla-text>
-          </simpla-link>
+      <div class="demo">
+        <h1 class="demo__title">Custom placeholder</h1>
+        <demo-snippet>
+          <template>
+            <simpla-link path="/placeholder" placeholder="URL for next page">
+              Next page >
+            </simpla-link>
+          </template>
+        </demo-snippet>
+      </div>
 
-          <br>
+      <div class="demo">
+        <h1 class="demo__title">Static content</h1>
+        <demo-snippet>
+          <template>
+            <simpla-link href="https://google.com" path="/static">
+              Predefined link
+            </simpla-link>
+          </template>
+        </demo-snippet>
+      </div>
 
-          <simpla-link path="/simpla-img">
-            <img is="simpla-img" path="/simpla-img/content">
-          </simpla-link>
-        </template>
-      </demo-snippet>
-    </div>
+      <div class="demo">
+        <h1 class="demo__title">Synced content</h1>
+        <demo-snippet>
+          <template>
+            <simpla-link path="/synced">
+              Synced link
+            </simpla-link>
 
-    <div class="demo">
-      <h1 class="demo__title">Custom placeholder</h1>
-      <demo-snippet>
-        <template>
-          <simpla-link path="/placeholder" placeholder="URL for next page">
-            Next page >
-          </simpla-link>
-        </template>
-      </demo-snippet>
-    </div>
+            <br>
 
-    <div class="demo">
-      <h1 class="demo__title">Static content</h1>
-      <demo-snippet>
-        <template>
-          <simpla-link href="https://google.com" path="/static">
-            Predefined link
-          </simpla-link>
-        </template>
-      </demo-snippet>
-    </div>
-
-    <div class="demo">
-      <h1 class="demo__title">Synced content</h1>
-      <demo-snippet>
-        <template>
-          <simpla-link path="/synced">
-            Synced link
-          </simpla-link>
-
-          <br>
-
-          <simpla-link path="/synced">
-            Synced link
-          </simpla-link>
-        </template>
-      </demo-snippet>
+            <simpla-link path="/synced">
+              Synced link
+            </simpla-link>
+          </template>
+        </demo-snippet>
+      </div>
     </div>
   </body>
 </html>
