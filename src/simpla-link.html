@@ -78,6 +78,11 @@
   </template>
 
   <script>
+    const SIMPLA_CONFIG = {
+      type: 'Link',
+      dataProperties: [ 'href' ]
+    };
+
     Polymer({
       is: 'simpla-link',
 
@@ -140,14 +145,7 @@
         'blur': '_close'
       },
 
-      behaviors: [ SimplaBehaviors.Element ],
-
-      created: function() {
-        this.setupSimpla({
-          type: 'Link',
-          dataProperties: [ 'href' ]
-        });
-      },
+      behaviors: [ SimplaBehaviors.Element(SIMPLA_CONFIG) ],
 
       /**
        * Open link prompt if editable
