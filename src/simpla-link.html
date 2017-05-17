@@ -30,7 +30,7 @@
         min-width: 11em;
         max-width: 16em;
         padding: 0.75em 1em;
-        font-size: var(--simpla-scale-0);
+        font-size: var(--simpla-scale-000);
         font-family: var(--simpla-font-family);
         color: white;
         background: var(--simpla-grey-700);
@@ -141,7 +141,7 @@
 
       listeners: {
         'focusin': '_open',
-        'blur': '_close'
+        'focusout': '_close'
       },
 
       behaviors: [ SimplaBehaviors.Element(SIMPLA_CONFIG) ],
@@ -161,7 +161,13 @@
        * @return {undefined}
        */
       _close: function() {
-        this.active = false;
+        const closeIfUnfocused = () => {
+          if (!this.contains(document.activeElement)) {
+            this.active = false;
+          }
+        };
+
+        setTimeout(closeIfUnfocused, 1)
       },
 
       /**
