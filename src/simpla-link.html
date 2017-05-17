@@ -140,11 +140,21 @@
       },
 
       listeners: {
+        'tap': '_reflectTap',
         'focusin': '_open',
         'focusout': '_close'
       },
 
       behaviors: [ SimplaBehaviors.Element(SIMPLA_CONFIG) ],
+
+      /**
+       * Reflect parent taps to internal anchor
+       * In case parent has padding or similar
+       * @return {undefined}
+       */
+      _reflectTap: function() {
+        this.$$('a').click();
+      },
 
       /**
        * Open link prompt if editable
