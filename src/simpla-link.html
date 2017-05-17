@@ -14,14 +14,10 @@
         display: inline-block;
         overflow: visible;
         outline: none;
-        font-size: var(--simpla-scale-0);
-        font-family: var(--simpla-font-family);
-        -moz-osx-font-smoothing: grayscale;
-         -webkit-font-smoothing: antialiased;
-                 font-smoothing: antialiased;
       }
 
       .wrapper {
+        display: inherit;
         position: relative;
       }
 
@@ -34,11 +30,16 @@
         min-width: 11em;
         max-width: 16em;
         padding: 0.75em 1em;
+        font-size: var(--simpla-scale-0);
+        font-family: var(--simpla-font-family);
         color: white;
         background: var(--simpla-grey-700);
         border: 0;
         outline: 0;
         border-radius: var(--simpla-border-radius);
+        -moz-osx-font-smoothing: grayscale;
+         -webkit-font-smoothing: antialiased;
+                 font-smoothing: antialiased;
       }
 
       .input::placeholder {
@@ -57,7 +58,7 @@
     </style>
 
     <div class="wrapper">
-       <input
+      <input
         type="text"
         class="input"
         value="{{href::input}}"
@@ -74,7 +75,6 @@
         <slot></slot>
       </a>
     </div>
-
   </template>
 
   <script>
