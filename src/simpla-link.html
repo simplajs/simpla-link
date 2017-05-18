@@ -168,16 +168,13 @@
 
       /**
        * Close link prompt
+       * @param {Event} e Focusout event
        * @return {undefined}
        */
-      _close: function() {
-        const closeIfUnfocused = () => {
-          if (!this.contains(document.activeElement)) {
-            this.active = false;
-          }
-        };
-
-        setTimeout(closeIfUnfocused, 1)
+      _close: function(e) {
+        if (!this.contains(e.relatedTarget)) {
+          this.active = false;
+        }
       },
 
       /**
