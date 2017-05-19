@@ -172,9 +172,13 @@
        * @return {undefined}
        */
       _close: function(e) {
-        if (!this.contains(e.relatedTarget)) {
-          this.active = false;
-        }
+        const closeIfUnfocused = () => {
+          if (!this.contains(document.activeElement)) {
+            this.active = false;
+          }
+        };
+
+        setTimeout(closeIfUnfocused, 1);
       },
 
       /**
