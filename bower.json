@@ -7,12 +7,11 @@
   "description": "Wrap any element in an editable link",
   "keywords": [
     "simpla",
-    "content",
+    "web-components",
+    "custom-element",
     "editable",
-    "cms",
-    "link",
-    "web component",
-    "custom element"
+    "content-management",
+    "link"
   ],
   "main": "simpla-link.html",
   "license": "MIT",
