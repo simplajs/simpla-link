@@ -1,7 +1,7 @@
 # Simpla Link
-![Version][bower-badge] [![Build status][travis-badge]][travis-url] ![Size][size-badge] [![Published][webcomponents-badge]][webcomponents-url] [![Simpla slack group][slack-badge]][slack-url]
+[![Build status][travis-badge]][travis-url] ![Size][size-badge] ![Version][bower-badge] [![Published][webcomponents-badge]][webcomponents-url] [![Simpla slack group][slack-badge]][slack-url]
 
-`simpla-link` is an editable link built on the [Simpla](https://www.simpla.io) content system. You can wrap any other HTML element with it just as you would a regular `<a>` link.
+Simpla-link is an editable anchor that you can update inline on your page. You can wrap any other HTML element with it just as you would a regular `<a>`. It's built on the [Simpla][simpla] content system. 
 
 <!---
 ```
@@ -12,7 +12,8 @@
 
     <script src="https://unpkg.com/simpla@^2.0.0"></script>
     <script>
-      Simpla.init('dummy');
+      Simpla.init('local');
+      Simpla.editable(true);
     </script>
 
     <style>
@@ -29,13 +30,9 @@
 ```
 -->
 ```html
-<simpla-link path="/my-link">
-  Click me!
+<simpla-link path="/link">
+  Next page >
 </simpla-link>
-
-<script>
-  Simpla.editable(true);
-</script>
 ```
 
 ## Installation and setup
@@ -43,55 +40,29 @@
 Install simpla-link with Bower (Yarn support coming soon)
 
 ```sh
-$ bower install simpla-link --save
+$ bower i simpla-link --save
 ```
 
-Then include the Simpla library and setup a project (read more about [setting up Simpla](https://www.simpla.io/docs/guides/get-started))
-
-```html
-<script src="https://unpkg.com/simpla@^2.0.0"></script>
-<script>
-  // TODO: replace 'project-id' with your project ID
-  Simpla.init('project-id')
-</script>
-```
-
-Import simpla-link into the `<head>` of your document
+[Setup Simpla][setup-simpla] on your page, then import simpla-link into your `<head>`
 
 ```html
 <link rel="import" href="/bower_components/simpla-link/simpla-link.html">
 ```
 
-And wrap whatever content you want to create a link for with a `<simpla-link>` element. You must also specify a content path (where the link's data will be stored on Simpla's API) in a `path` attribute.
+Wrap the content you want to link with `<simpla-link>`. Give each link a unique `path`, where it will store its data in your project
 
 ```html
-<simpla-link path="/my-link">
+<simpla-link path="/link">
   Next page >
 </simpla-link>
 ```
 
-> Read more about [Simpla's content model](https://www.simpla.io/docs/guides/content-model)
-
 Simpla link plays nicely with other Simpla elements, so you can linkify editable content
 
 ```html
-<!-- Robust button -->
 <simpla-link path="/button">
-  <simpla-text plaintext path="/button/text"></simpla-text> 
+  <simpla-text path="/button/label" plaintext></simpla-text> 
 </simpla-link>
-
-<!-- Thumbnail prevew image -->
-<simpla-link path="/preview">
-  <img is="simpla-img" path="/preview/thumbnail">
-</simpla-link>
-```
-
-### Polyfills for cross-browser support
-
-`simpla-link` relies on emerging standards, for full cross-browser support make sure you include the [Web Components Lite](https://github.com/webcomponents/webcomponentsjs) polyfill.
-
-```html
-<script src="https://unpkg.com/webcomponents.js@^0.7.24/webcomponents-lite.min.js"></script>
 ```
 
 ## Editing content
@@ -105,39 +76,37 @@ Simpla.editable(true);
 
 ```html
 <!-- Make only this image editable -->
-<simpla-link path="/my-link" editable></simpla-link>
+<simpla-link path="/link" editable></simpla-link>
 ```
 
-Entering edit mode with Simpla is the recommended way to edit links. It ensures all elements on a page remain in sync and updates Simpla's public `'editable'` state, which other elements may rely on.
-
-> If you include the [simpla-admin](https://webcomponents.org/element/SimplaElements/simpla-admin) component on your page, you can also enter edit mode by adding #edit to the end of your URL
+Entering edit mode with Simpla is the recommended way to edit links. It ensures all elements on a page remain in sync and updates Simpla's public `editable` state, which other elements may rely on.
 
 ## Saving content
 
-Save a `simpla-link` by calling Simpla's `save` method, which will save all modified content on the page. It returns a promise.
+Save a simpla-link by calling Simpla's `save()` method, which saves all modified content on the page. It returns a promise.
 
 ```js
 // Save all modified Simpla content
 Simpla.save();
 ```
 
-Note you must be authenticated before saving content - either login with `simpla-admin` or the `Simpla.login()` method.
-
-> If you have included the [simpla-admin](http://webcomponents.org/element/SimplaElements/simpla-admin) component on your site, you can save content by entering edit mode and just pressing the 'save' button.
+> You must be authenticated with Simpla before saving content
 
 ## Initializing with static content
 
-You can set the `href` of simpla-link just like you would with a regular `<a>`. If content for the link's `path` exists on Simpla's API, the locally set `href` will be overwritten
+You can set the `href` of simpla-link just like you would with a regular `<a>`. If content for the link's path exists on Simpla's API, the locally set `href` will be overwritten
 
 ```html
-<simpla-link href="https://google.com" path="/my-link"></simpla-link>
+<simpla-link href="https://google.com" path="/link"></simpla-link>
 ```
 
 Initializing with static content is useful for converting existing links and buttons to Simpla links, or bootstrapping a project with predefined content. By setting `href` and then calling `Simpla.save()` you can easily set content directly to Simpla.
 
+> Since static content is overwritten by remote data, you should not have a href set in production
+
 ## Custom placeholders
 
-You can set a custom placeholder for the link prompt with the `placeholder` attribute
+You can set a custom placeholder for the link input prompt with a `placeholder` attribute
 
 ```html
 <simpla-link path="/next-page" placeholder="URL for next page">
@@ -145,24 +114,24 @@ You can set a custom placeholder for the link prompt with the `placeholder` attr
 </simpla-link>
 ```
 
-
 ## API reference
 
 ### Properties
 
 Property      | Type    | Default           | Description                                                   
-------------- | ------- | ----------------- | -----------                                                   
+------------- | ------- | ----------------- | -----------     
+`path`        | String  | `undefined`       | Path to the data for this link on Simpla's API                                                          
 `href`        | String  | `''`              | Href of the link
-`path`        | String  | `undefined`       | Path to the data for this link on Simpla's API            
 `placeholder` | String  | `Enter a URL...`  | Placeholder for the link prompt
 `editable`    | Boolean | `false`           | Whether the link is editable                                 
 `active`      | Boolean | `false`           | Whether the link prompt is open
+`loaded`      | Boolean | `false`           | Whether the link href has loaded
 
 Properties can be set either directly with JavaScript or as attributes on the element
 
 ```html
 <!-- Set property as attribute -->
-<simpla-link path="/my-link" editable></simpla-link>
+<simpla-link path="/link" editable></simpla-link>
 ```
 
 ```js
@@ -177,6 +146,7 @@ Event              | Description
 `href-changed`     | Fired whenever the `src` property changes      
 `editable-changed` | Fired whenever the `editable` property changes 
 `active-changed`   | Fired whenever the `active` property changes   
+`loaded-changed`   | Fired whenever the `loaded` property changes   
 
 ## Contributing
 
@@ -184,8 +154,10 @@ If you find any issues with simpla-link please report them! If you'd like to see
 
 ***
 
-MIT © Simpla <friends@simpla.io>
+MIT © [Simpla][simpla]
 
+[simpla]: https://www.simpla.io
+[setup-simpla]: https://www.simpla.io/docs/guides/get-started
 [bower-badge]: https://img.shields.io/bower/v/simpla-link.svg
 [bowerlicense-badge]: https://img.shields.io/bower/l/simpla-link.svg
 [travis-badge]: https://img.shields.io/travis/SimplaElements/simpla-link.svg
