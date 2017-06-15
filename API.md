@@ -43,9 +43,9 @@ Data   | Type      | Description
 
 ## Events
 
-Event              | Description                                    
------------------- | -----------                                    
-`href-changed`     | Fired whenever the `src` property changes      
-`editable-changed` | Fired whenever the `editable` property changes 
-`active-changed`   | Fired whenever the `active` property changes   
-`loaded-changed`   | Fired whenever the `loaded` property changes   
+Event              | Properties       | Description                                    
+------------------ | ---------------- | -----------                                    
+`href-changed`     | `value{String}`  | Fired when `href` property changes      
+`editable-changed` | `value{Boolean}` | Fired when `editable` property changes 
+`active-changed`   | `value{Boolean}` | Fired when `active` property changes   
+`loaded-changed`   | `value{Boolean}` | Fired when `loaded` property changes   
