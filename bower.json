@@ -16,6 +16,9 @@
   "main": "simpla-link.html",
   "license": "MIT",
   "homepage": "https://github.com/SimplaElements/simpla-link/",
+  "pages": {
+    "API Reference": "API.md"
+  },
   "demos": {
     "Demo": "demo/index.html"
   },
