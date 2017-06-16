@@ -8,6 +8,7 @@ Property      | Type      | Default           | Description
 `href`        | `String`  | `''`              | Href of the link
 `placeholder` | `String`  | `Enter a URL...`  | Placeholder for the link prompt
 `editable`    | `Boolean` | `false`           | Whether the link is editable                                 
+`readonly`    | `Boolean` | `false`           | Whether the link is able to become editable                                 
 `active`      | `Boolean` | `false`           | Whether the link prompt is open
 `loaded`      | `Boolean` | `false`           | Whether the link href has loaded
 

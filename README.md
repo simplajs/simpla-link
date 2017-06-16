@@ -42,6 +42,7 @@ Simpla-link is an editable anchor that you can update inline on your page. You c
 - [Saving content](#saving-content)
 - [Initializing with static content](#initializing-with-static-content)
 - [Custom placeholders](#custom-placeholders)
+- [Readonly](#readonly)
 - [Contributing](#contributing)
 
 ### Resources
@@ -112,7 +113,9 @@ Simpla.save();
 You can set the `href` of simpla-link just like you would with a regular `<a>`. If content for the link's path exists on Simpla's API, the locally set `href` will be overwritten
 
 ```html
-<simpla-link href="https://google.com" path="/link"></simpla-link>
+<simpla-link href="https://google.com" path="/link">
+  Visit google
+</simpla-link>
 ```
 
 Initializing with static content is useful for converting existing links and buttons to Simpla links, or bootstrapping a project with predefined content. By setting `href` and then calling `Simpla.save()` you can easily set content directly to Simpla.
@@ -124,10 +127,21 @@ Initializing with static content is useful for converting existing links and but
 You can set a custom placeholder for the link input prompt with a `placeholder` attribute
 
 ```html
-<simpla-link path="/next-page" placeholder="URL for next page">
+<simpla-link path="/link" placeholder="URL for next page">
   Next page >
 </simpla-link>
 ```
+
+## Readonly
+
+Simpla-link has a `readonly` property that stops it from becoming editable, even if Simpla is in edit mode or you try to set `editable` on the element directly. This is useful for using simpla-link to purely consume and display content from Simpla's API.
+
+```html
+<simpla-link path="/link" readonly>
+  Next page >
+</simpla-link>
+```
+
 
 ## Contributing
 
