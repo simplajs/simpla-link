@@ -68,6 +68,7 @@
       >
 
       <a href="[[href]]"
+        target="{{target}}"
         class="link"
         data-editable$="[[editable]]"
         on-tap="_disableLinkWhileEditable"
@@ -97,6 +98,11 @@
           value: '',
           reflectToAttribute: true,
           notify: true
+        },
+
+        target: {
+          type: String,
+          reflectToAttribute: true
         },
 
         /**

@@ -2,13 +2,14 @@
 
 ## Properties
 
-Property      | Type      | Default           | Description                                                   
-------------- | --------- | ----------------- | -----------     
-`path`        | `String`  | `undefined`       | Path to the data for this link on Simpla's API                                                          
+Property      | Type      | Default           | Description
+------------- | --------- | ----------------- | -----------
+`path`        | `String`  | `undefined`       | Path to the data for this link on Simpla's API
 `href`        | `String`  | `''`              | Href of the link
+`target`      | `String`  | `''`              | Target property of the link
 `placeholder` | `String`  | `Enter a URL...`  | Placeholder for the link prompt
-`editable`    | `Boolean` | `false`           | Whether the link is editable                                 
-`readonly`    | `Boolean` | `false`           | Whether the link is able to become editable                                 
+`editable`    | `Boolean` | `false`           | Whether the link is editable
+`readonly`    | `Boolean` | `false`           | Whether the link is able to become editable
 `active`      | `Boolean` | `false`           | Whether the link prompt is open
 `loaded`      | `Boolean` | `false`           | Whether the link href has loaded
 
@@ -26,8 +27,8 @@ Properties can be set either directly with JavaScript or as attributes on the el
 
 **Type:** `'Link'`
 
-Data   | Type      | Description                                           
------- | --------- | -----------                                           
+Data   | Type      | Description
+------ | --------- | -----------
 `href` | `String`  | Href of the link
 
 ```json
@@ -44,9 +45,9 @@ Data   | Type      | Description
 
 ## Events
 
-Event              | Properties       | Description                                    
------------------- | ---------------- | -----------                                    
-`href-changed`     | `value{String}`  | Fired when `href` property changes      
-`editable-changed` | `value{Boolean}` | Fired when `editable` property changes 
-`active-changed`   | `value{Boolean}` | Fired when `active` property changes   
-`loaded-changed`   | `value{Boolean}` | Fired when `loaded` property changes   
+Event              | Properties       | Description
+------------------ | ---------------- | -----------
+`href-changed`     | `value{String}`  | Fired when `href` property changes
+`editable-changed` | `value{Boolean}` | Fired when `editable` property changes
+`active-changed`   | `value{Boolean}` | Fired when `active` property changes
+`loaded-changed`   | `value{Boolean}` | Fired when `loaded` property changes
