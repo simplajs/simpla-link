@@ -1,5 +1,5 @@
 # Simpla Link
-[![Build status][travis-badge]][travis-url] ![Size][size-badge] ![Version][bower-badge] [![Published][webcomponents-badge]][webcomponents-url] [![Simpla slack group][slack-badge]][slack-url]
+[![Build status][travis-badge]][travis-url] ![Size][size-badge] ![Version][bower-badge] [![Published][webcomponents-badge]][webcomponents-url]
 
 Simpla-link is an editable anchor that you can update inline on your page. You can wrap any other HTML element with it just as you would a regular `<a>`. It's built on the [Simpla][simpla] content system. 
 
@@ -145,7 +145,7 @@ Simpla-link has a `readonly` property that stops it from becoming editable, even
 
 ## Contributing
 
-If you find any issues with simpla-link please report them! If you'd like to see a new feature in supported file an issue or let us know in Simpla's public [Slack group][slack-url]. We also happily accept PRs. 
+If you find any issues with simpla-link please report them! If you'd like to see a new feature in supported file an issue. We also happily accept PRs. 
 
 ***
 
@@ -154,19 +154,15 @@ MIT © [Simpla][simpla]
 [simpla]: https://www.simpla.io
 [simpla-setup]: https://www.simpla.io/docs/guides/get-started
 
-[api]: https://www.webcomponents.org/element/SimplaElements/simpla-link/page/API.md
-[demo]: https://www.webcomponents.org/element/SimplaElements/simpla-link/demo/demo/index.html
-[license]: https://github.com/SimplaElements/simpla-link/blob/master/LICENSE
+[api]: https://www.webcomponents.org/element/simplaio/simpla-link/page/API.md
+[demo]: https://www.webcomponents.org/element/simplaio/simpla-link/demo/demo/index.html
+[license]: https://github.com/simplaio/simpla-link/blob/master/LICENSE
 
 [bower-badge]: https://img.shields.io/bower/v/simpla-link.svg
 [bowerlicense-badge]: https://img.shields.io/bower/l/simpla-link.svg
-[travis-badge]: https://img.shields.io/travis/SimplaElements/simpla-link.svg
-[travis-url]: https://travis-ci.org/SimplaElements/simpla-link
-[bowerdeps-badge]: https://img.shields.io/gemnasium/SimplaElements/simpla-link.svg
-[bowerdeps-url]: https://gemnasium.com/bower/simpla-link
-[size-badge]: https://badges.herokuapp.com/size/github/SimplaElements/simpla-link/master/simpla-link.html?gzip=true
+[travis-badge]: https://img.shields.io/travis/simplaio/simpla-link.svg
+[travis-url]: https://travis-ci.org/simplaio/simpla-link
+[size-badge]: https://badges.herokuapp.com/size/github/simplaio/simpla-link/master/simpla-link.html?gzip=true
 [webcomponents-badge]: https://img.shields.io/badge/webcomponents.org-published-blue.svg
-[webcomponents-url]: https://www.webcomponents.org/element/SimplaElements/simpla-link
-[slack-badge]: http://slack.simpla.io/badge.svg
-[slack-url]: https://slack.simpla.io
+[webcomponents-url]: https://www.webcomponents.org/element/simplaio/simpla-link
 
